@@ -1,0 +1,58 @@
+<!-- render base html for header, footer and sidenav bar -->
+
+{% extends 'base.html' %}
+
+{% block title %}About Me - Portfolio {% endblock %}
+
+{% block content %}
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+										<header>
+											<h1>Hi, I’m Deepshika.<br />
+											</h1>
+											<p>Research Assistant at Cambrian R&D</p>
+										</header>
+										<p>{{ about_me }}</p>
+										<!-- link to my linked in account -->
+										<ul class="actions">
+											<li><a href="https://www.linkedin.com/in/deepshika-ghale/" class="button big">Connect with me</a></li>
+										</ul>
+									</div>
+									<span class="image object">
+										<img src="static/images/profile.jpeg" alt="" />
+									</span>
+								</section>
+
+							<!-- Section for experience-->
+								<section>
+									<header class="major">
+										<h2>Experience</h2>
+									</header>
+									<div class="features">
+										
+										<!-- loop through the experience list -->
+										{% for exp in experience %}
+										
+										<article>
+											<span style="margin: 10px"> 
+												<img src= "{{ exp.image }}" alt="" />
+											</span>
+											<div class="content">
+												<h3>{{exp.name}}</h3>
+												<p>Position: <b> {{exp.position}} </b></p>
+												<p>{{exp.timeline}}</p>
+												
+											</div>
+										</article>
+
+										{% endfor %}
+									</div>
+								</section>
+
+							<!-- Section -->
+
+					
+					
+
+			{% endblock %}

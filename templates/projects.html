@@ -1,0 +1,68 @@
+<!-- render base html for header, footer and sidenav bar -->
+{% extends 'base.html' %}
+
+{% block title %}Project - Portfolio {% endblock %}
+
+{% block content %}
+<!-- Section -->
+<section>
+ 
+    <h2>My Projects</h2>
+  <div>
+    <article>
+      <!-- loop through the project list -->
+      {% for proj in projects %}
+
+      <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+
+      <!-- name -->
+       <header class="major">
+      <h3>{{ proj.name }}</h3>
+         </header>
+      <!-- description -->
+      <p>{{ proj.description }}</p>
+      <!-- architecture image -->
+      {% if proj.architectureImage %}
+        <h2>Architecture Overview</h2>
+        <img src="{{ proj.architectureImage }}" alt="Architecture Diagram">
+      {% endif %}
+      <!-- result image -->
+      {% if proj.resultImage %}
+        <h2>Result Image</h2>
+        <img src="{{ proj.resultImage }}" style="width: 40%; height: 10%; border: none;" alt="Result Image">
+      {% endif %}
+      <!-- additional image -->
+      {% if proj.image %}
+        <h2>Image</h2>
+        <img src="{{ proj.image }}" alt="Additional Image">
+      {% endif %}
+
+      <!-- project file -->
+      {% if proj.file %}
+        <h2>Project File</h2>
+        <iframe src="{{ proj.file }}" style="width: 50%; height: 50%; border: none;"></iframe>
+      
+
+      <ul class="actions">
+        <li><a href="{{ proj.file }}" class="button">Download Project File</a></li>
+      </ul>
+      
+      {% endif %}
+
+      <!-- project link -->
+      {% if proj.link %}
+        
+      <ul class="actions">
+        <li><a href="{{ proj.link }}" class="button">View Project Online</a></li>
+      </ul>
+      {% endif %}
+
+    
+      {% endfor %}
+    </article>
+  </div>
+</section>
+
+
+
+{% endblock %}

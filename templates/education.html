@@ -1,0 +1,32 @@
+<!-- render base html for header, footer and sidenav bar -->
+
+{% extends 'base.html' %}
+
+{% block title %} Education - Portfolio {% endblock %}
+
+{% block content %}
+
+							<!-- Content to display education -->
+								<section>
+									<header class="main">
+										<h1>Education</h1>
+									</header>
+									<<!-- list of education -->
+									{% for edu in education %}
+									<span class="image"><img src="{{ edu.image }}" alt="" /></span>
+									<h3>{{edu.name}}</h3>
+									<p>{{edu.level}}</p>
+									<p style="color: grey;">{{edu.timeline}}</p>
+									<ul>
+										<!-- list of academic experience gained from the degree -->
+										<h4>Academic Experience</h4>
+										{% for des in edu.description %}
+											<li>{{des}}</li>
+										{% endfor %}
+									</ul>
+									<hr class="major" />
+									
+									{% endfor %}
+								</section>
+
+					 {% endblock %}

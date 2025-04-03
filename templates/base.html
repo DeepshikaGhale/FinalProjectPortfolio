@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="static/assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Main -->
+          <div id="main">
+            <div class="inner">
+
+              <!-- Header -->
+                <header id="header">
+                  <a href="/" class="logo"><strong>DG - Portfolio</strong></a>
+                  <ul class="icons">
+                    <!--links to my linked in profile  -->
+                    <li><a href="https://www.linkedin.com/in/deepshika-ghale/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <!--links to my medium profile  -->
+                    <li><a href="https://medium.com/@deepshikaghale99" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+                  </ul>
+                </header>
+
+              
+              <!-- body - section -->
+              <section>
+                {% block content %}{% endblock %}
+              </section>
+             <!--  body - section -->
+
+            </div>
+          </div>
+
+        <!-- Sidebar -->
+          <div id="sidebar">
+            <div class="inner">
+
+              <!-- Menu bar -->
+                <nav id="menu">
+                  <header class="major">
+                    <h2>Menu</h2>
+                  </header>
+                  <ul>
+                    <li><a href="/">About Me</a></li>
+                    <li><a href="/education">Education</a></li>
+                    <li><a href="/skills">Skills</a></li>
+                    <li>
+                      <a href="/projects">Projects</a>
+                    </li>
+                    <li>
+                      <a href="/contact">Contact Me</a>
+                    </li>
+
+                  </ul>
+                </nav>
+
+              <!-- Section -->
+                <section>
+                  <header class="major">
+                    <h2>Get in touch</h2>
+                  </header>
+                  <p>You can get in touch with me through the contact information mentioned below.</p>
+                  <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href=mailto:“{{contact_info.email}}”>{{ contact_info.email }}</a></li>
+                    <li class="icon solid fa-phone"> {{contact_info.phone}} </li>
+                    <li class="icon brands fa-github">
+                    <a href=“{{contact_info.github}}”>{{contact_info.github}}</a></li>
+                  </ul>
+                </section>
+
+              <!-- Footer -->
+                <footer id="footer">
+                  <p class="copyright">&copy; Deepshika Ghale Portfolio {{current_year}}, All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+
+            </div>
+          </div>
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="static/assets/js/jquery.min.js"></script>
+      <script src="static/assets/js/browser.min.js"></script>
+      <script src="static/assets/js/breakpoints.min.js"></script>
+      <script src="static/assets/js/util.js"></script>
+      <script src="static/assets/js/main.js"></script>
+
+  </body>
+</html>

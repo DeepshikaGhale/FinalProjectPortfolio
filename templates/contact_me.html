@@ -1,0 +1,102 @@
+
+<!-- render base html -->
+{% extends 'base.html' %}
+
+{% block title %}Contact Me - Portfolio {% endblock %}
+
+{% block content %}
+
+              <!-- Form -->
+              <h3>Contact Me Form</h3>
+
+<!-- For displaying flash messages once the submission is done -->
+<div id="flashMessage"></div> 
+
+              <form id="contactForm">
+                <div class="row gtr-uniform">
+                  <!-- name field -->
+                  <div class="col-6 col-12-xsmall">
+                    <input type="text" name="client-name" id="client-name" value="" placeholder="Name" required/>
+                  </div>
+                  <!-- email field  -->
+                  <div class="col-6 col-12-xsmall">
+                    <input type="email" name="client-email" id="client-email" value="" placeholder="Email" required/>
+                  </div>
+                  <!-- Break -->
+                  <!-- reason to contact field  -->
+                  <div class="col-12">
+                    <select name="client-category" id="client-category" required>
+                      <option value="">- Category -</option>
+                      <option value="1">Hiring</option>
+                      <option value="1">Enquiry</option>
+                      <option value="1">Project Discussion</option>
+                    </select>
+                  </div>
+              
+                
+                  <!-- Break -->
+                  <div class="col-6 col-12-small">
+                    <input type="checkbox" id="client-copy" name="client-copy">
+                    <label for="demo-copy">Email me a copy (Optional)</label>
+                  </div>
+                  
+                  <!-- Break -->
+                  <div class="col-12">
+                    <textarea name="client-message" id="client-message" placeholder="Enter your message" rows="6" required></textarea>
+                  </div>
+                  <!-- Break -->
+                  <div class="col-12">
+                    <ul class="actions">
+                      <li><input type="submit" value="Send Message" class="primary" /></li>
+                      <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                  </div>
+                </div>
+              </form>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Create FormData object from the form
+            const formData = new FormData(this);
+
+            // Send form data using Fetch API
+            fetch('/contact', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                return response.json(); // Parse JSON response
+            })
+            .then(data => {
+                const flashMessageDiv = document.getElementById('flashMessage');
+                flashMessageDiv.style.display = 'block'; // Show the flash message
+                flashMessageDiv.innerHTML = data.message; // Display the message
+                flashMessageDiv.style.color = 'green'; // Set the color based on the message type
+
+                // Optionally, you can style the message based on status
+                if (data.status === 'success') {
+                    flashMessageDiv.className = 'alert alert-success';
+                } else {
+                    flashMessageDiv.className = 'alert alert-danger';
+                }
+
+                // Reset the form if successful
+                if (data.status === 'success') {
+                    document.getElementById('contactForm').reset();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
+
+            {% endblock %}
+
