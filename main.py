@@ -4,7 +4,7 @@ from flask import Flask, jsonify, render_template, request
 
 from data import aboutMe, getCurrentData, getEducation, getProjectsData, getSkills
 
-app = Flask('app')
+app = Flask(__name__)
 
 #to make the data available throughout the site
 @app.context_processor
@@ -56,7 +56,3 @@ def contactme():
     return jsonify({'status': 'success', 'message': 'Your message has been sent successfully!'})
 
   return render_template('contact_me.html')
-
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8080)
